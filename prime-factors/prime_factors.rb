@@ -1,17 +1,17 @@
 class PrimeFactors
   def self.for number
-  	factors = []
-  	index = 0
-    
-    i = 2
-    while i <= number && number != 1
-      while number % i == 0
-        factors[index] = i
+    factors = []
+    index = 0
+
+    divisor = 2
+    while divisor <= number && number != 1
+      while number % divisor == 0
+        factors[index] = divisor
         index += 1
-        number /= i
+        number /= divisor
       end
-      i += 1 	
+      divisor += 1
     end
-    return factors
-  end	
-end	
+    factors
+  end
+end
