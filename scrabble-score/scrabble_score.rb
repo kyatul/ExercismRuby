@@ -1,0 +1,27 @@
+# Exercism Ruby - Scrabble
+class Scrabble
+  @@scores = {
+               'A' => 1, 'B' => 3, 'C' => 3, 'D' => 2,
+               'E' => 1, 'F' => 4, 'G' => 2, 'H' => 4,
+               'I' => 1, 'J' => 8, 'K' => 5, 'L' => 1,
+               'M' => 3, 'N' => 1, 'O' => 1, 'P' => 3,
+               'Q' => 10, 'R' => 1, 'S' => 1, 'T' => 1,
+               'U' => 1, 'V' => 4, 'W' => 4, 'X' => 8,
+               'Y' => 4, 'Z' => 10 }
+
+  def initialize(letters)
+    @letters = letters.nil? ? '' : letters.strip
+  end
+
+  def self.score(letters)
+    Scrabble.new(letters).score
+  end
+
+  def score
+    result = 0
+    @letters.split('').each do |letter|
+      result += @@scores[letter.upcase]
+    end
+    result
+  end
+end
