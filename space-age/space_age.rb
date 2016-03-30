@@ -20,35 +20,9 @@ class SpaceAge
     @age_in_seconds
   end
 
-  def on_earth
-    (@age_in_seconds / YEAR_SECONDS_ON_EARTH) / @@orbital_periods['earth']
-  end
-
-  def on_mercury
-    (@age_in_seconds / YEAR_SECONDS_ON_EARTH) / @@orbital_periods['mercury']
-  end
-
-  def on_venus
-    (@age_in_seconds / YEAR_SECONDS_ON_EARTH) / @@orbital_periods['venus']
-  end
-
-  def on_mars
-    (@age_in_seconds / YEAR_SECONDS_ON_EARTH) / @@orbital_periods['mars']
-  end
-
-  def on_jupiter
-    (@age_in_seconds / YEAR_SECONDS_ON_EARTH) / @@orbital_periods['jupiter']
-  end
-
-  def on_saturn
-    (@age_in_seconds / YEAR_SECONDS_ON_EARTH) / @@orbital_periods['saturn']
-  end
-
-  def on_uranus
-    (@age_in_seconds / YEAR_SECONDS_ON_EARTH) / @@orbital_periods['uranus']
-  end
-
-  def on_neptune
-    (@age_in_seconds / YEAR_SECONDS_ON_EARTH) / @@orbital_periods['neptune']
+  @@orbital_periods.each do |planet, orbital_period|
+    define_method("on_#{planet}") do
+      (@age_in_seconds / YEAR_SECONDS_ON_EARTH) / orbital_period
+    end
   end
 end
